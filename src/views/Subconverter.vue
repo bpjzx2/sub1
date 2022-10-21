@@ -37,6 +37,7 @@
                     :fetch-suggestions="backendSearch"
                     placeholder="动动小手，（建议）自行搭建后端服务。例：http://127.0.0.1:25500/sub?"
                   >
+	
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
                   </el-autocomplete>
                 </el-form-item>
@@ -339,15 +340,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: 
-<select style="width: 100%">
-  		<option value="https://sub.bpjzx2.workers.dev/sub?" >https://sub.bpjzx2.workers.dev(需要代理，不推荐)</option>
-  		<option value="https://sub.xeton.dev/sub?">https://sub.xeton.dev(推荐)</option>
-  		<option value="https://api.dler.io/sub?">https://api.dler.io(推荐)</option>
-  		<option value="https://sub.789.st/sub?">https://sub.789.st(推荐)</option>
-                  </el-autocomplete>
-
-	</select>,
+        customBackend: "" ,
         remoteConfig: "",
         excludeRemarks: "",
         includeRemarks: "",
@@ -448,7 +441,7 @@ export default {
 
       let backend =
         this.form.customBackend === ""
-          ? defaultBackend
+          ? backendOptions
           : this.form.customBackend;
 
       let sourceSub = this.form.sourceSubUrl;
