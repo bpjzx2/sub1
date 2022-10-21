@@ -35,7 +35,7 @@
                     style="width: 100%"
                     v-model="form.customBackend"
                     :fetch-suggestions="backendSearch"
-		@select="
+			@select=""
                     placeholder="默认后端地址对需要代理才可访问的网站很不友好，例如GitHub反代"
                   >
 	
