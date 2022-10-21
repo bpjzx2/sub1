@@ -85,7 +85,33 @@ export default {
       searchName.value = "[label：" + item.label + "； name：" + item.name + "]"
     }
 
-   
+   /**模糊匹配方法 */
+    const nameFilter = (item, backendSearch) => {
+      return item.label.toLowerCase().match(backendSearch.toLowerCase()) ? true : false
+    }
+
+    /**首字母匹配法 */
+    const firstCharFilter = (item, backendSearch) =>
+      item.label.toLowerCase().indexOf(backendSearch.toLowerCase()) === 0
+
+
+    /**请求后端接口检索 */
+    const backendSearchAsync = (backendSearch, cb) => {
+      let results = []
+      if (backendSearch === '') {
+        cb(results)
+      } else {
+        try {
+          // 请求接口
+          const res = []
+          results = res
+          cb(results)
+        } catch (error) {
+          proxy.$message.error(error.message)
+        }
+      }
+    }
+
     onMounted(() => {
       getList()
     })
@@ -132,7 +158,7 @@ export default {
     return {
       searchName,
       matchName,
-      backendSearch,
+      backendSear,
       handleSelect,
       querySearchAsync
 
