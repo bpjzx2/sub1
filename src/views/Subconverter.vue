@@ -340,7 +340,10 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "" ,
+        customBackend: "https://sub.bpjzx2.workers.dev/sub?" ,
+	customBackend: "https://sub.xeton.dev/sub?",
+	customBackend: "https://api.dler.io/sub?",
+	customBackend: "https://sub.789.st/sub?",
         remoteConfig: "",
         excludeRemarks: "",
         includeRemarks: "",
@@ -441,7 +444,7 @@ export default {
 
       let backend =
         this.form.customBackend === ""
-          ? backendOptions
+          ? defaultBackend
           : this.form.customBackend;
 
       let sourceSub = this.form.sourceSubUrl;
