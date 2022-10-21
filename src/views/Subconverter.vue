@@ -40,7 +40,12 @@
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
                   </el-autocomplete>
                 </el-form-item>
-
+ backendOptions: [{ value: "http://127.0.0.1:25500/sub?" },
+			{ value: "https://sub.bpjzx2.workers.dev/sub?" },
+			{ value: "https://sub.xeton.dev/sub?" },
+			{ value: "https://api.dler.io/sub?" },
+			{ value: "https://sub.789.st/sub?" },
+        ],
               <div v-if="advanced === '2'">
                 
                 <el-form-item label="远程配置:">
@@ -257,12 +262,7 @@ export default {
           ClashR: "clashr",
           Surge2: "surge&ver=2",
         },
-        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" },
-			{ value: "https://sub.bpjzx2.workers.dev/sub?" },
-			{ value: "https://sub.xeton.dev/sub?" },
-			{ value: "https://api.dler.io/sub?" },
-			{ value: "https://sub.789.st/sub?" },
-        ],
+       
         remoteConfig: [
           {
             label: "universal",
