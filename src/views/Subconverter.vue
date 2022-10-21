@@ -235,11 +235,11 @@ const tgBotLink = process.env.VUE_APP_BOT_LINK
 export default {
   data() {
     return {
-      backendVersion: "https://api.dler.io/sub?",
+      backendVersion: "",
       advanced: "1",
 
       // 是否为 PC 端
-      isPC: true,
+      isPC: false,
 
       options: {
         clientTypes: {
