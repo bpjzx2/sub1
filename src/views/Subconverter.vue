@@ -35,7 +35,8 @@
 		  placeholder="默认后端地址对需要代理才可访问的网站很不友好，例如GitHub反代"
                     style="width: 100%"
                     v-model="form.customBackend"
-                    :fetch-suggestions="backendSearch" @select="handleSelect">
+                    :fetch-suggestions="backendSearch"
+		    @select="handleSelect">
 	
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
                   </el-autocomplete>
