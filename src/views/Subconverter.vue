@@ -29,9 +29,8 @@
                   <el-option v-for="(v, k) in options.clientTypes" :key="k" :label="k" :value="v"></el-option>
                 </el-select>
               </el-form-item>
-
-              <div v-if="advanced === '2'">
-                <el-form-item label="后端地址:">
+	</el-form-item>
+	<el-form-item label="后端地址:">
                   <el-autocomplete
                     style="width: 100%"
                     v-model="form.customBackend"
@@ -41,6 +40,9 @@
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
                   </el-autocomplete>
                 </el-form-item>
+
+              <div v-if="advanced === '2'">
+                
                 <el-form-item label="远程配置:">
                   <el-select
                     v-model="form.remoteConfig"
