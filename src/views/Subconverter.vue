@@ -29,7 +29,7 @@
                   <el-option v-for="(v, k) in options.clientTypes" :key="k" :label="k" :value="v"></el-option>
                 </el-select>
               </el-form-item>
-	</el-form-item>
+	
 	<el-form-item label="后端地址:">
                   <el-autocomplete
                     style="width: 100%"
