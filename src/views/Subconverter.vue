@@ -339,7 +339,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "",
+        customBackend: "https://api.dler.io/sub?",
         remoteConfig: "",
         excludeRemarks: "",
         includeRemarks: "",
