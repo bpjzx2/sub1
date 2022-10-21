@@ -256,7 +256,10 @@ export default {
           Surge2: "surge&ver=2",
         },
         backendOptions: [{ value: "http://127.0.0.1:25500/sub?" },
-                         { value: "https://sub.bpjzx2.workers.dev/sub?" }
+			{ value: "https://sub.bpjzx2.workers.dev/sub?" },
+			{ value: "https://sub.xeton.dev/sub?" },
+			{ value: "https://api.dler.io/sub?" },
+			{ value: "https://sub.789.st/sub?" },
         ],
         remoteConfig: [
           {
