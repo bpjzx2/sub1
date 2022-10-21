@@ -340,10 +340,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "https://sub.bpjzx2.workers.dev/sub?" ,
-	customBackend: "https://sub.xeton.dev/sub?",
-	customBackend: "https://api.dler.io/sub?",
-	customBackend: "https://sub.789.st/sub?",
+        customBackend: "" ,
         remoteConfig: "",
         excludeRemarks: "",
         includeRemarks: "",
