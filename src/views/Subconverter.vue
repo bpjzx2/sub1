@@ -6,7 +6,7 @@
           <div slot="header">
             白嫖集装箱
             <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject"/>
-           <div style="display: inline-block; position:absolute; right: 20px"><a href="https://t.me/bpjzx2">免费节点点我</a></div>
+           <div style="display: inline-block; position:absolute; right: 20px"><a href="https://t.me/bpjzx2" target="_blank">免费节点点我</a></div>
             <div style="display: none; position:absolute; right: 20px">{{ backendVersion }}</div>
           </div>
           <el-container>
