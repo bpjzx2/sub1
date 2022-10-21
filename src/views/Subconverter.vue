@@ -32,141 +32,15 @@
 	
 	<el-form-item label="后端地址:">
                   <el-autocomplete
-		  placeholder="默认后端地址对需要代理才可访问的网站很不友好，例如GitHub反代"
                     style="width: 100%"
                     v-model="form.customBackend"
                     :fetch-suggestions="backendSearch"
-		    @select="handleSelect">
+                    placeholder="🈲默认后端地址对需要代理才可访问的网站很不友好，例如GitHub反代!!!"
+                  >
 	
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
                   </el-autocomplete>
                 </el-form-item>
-  <script>
-import { getCurrentInstance, onMounted, reactive, ref } from 'vue'
-
-export default {
-  setup () {
-    const { proxy } = getCurrentInstance()
-    const searchName = ref('')
-    const matchName = ref('')
-    const totalData = ref([])
-    let timeOut = reactive()
-
-    /**获取总查询表信息 */
-    const getList = () => {
-      try {
-        // 这里应该请求接口
-        totalData.value = list
-      } catch (error) {
-        proxy.$message.error(error.message)
-      }
-    }
-
-    /**搜索结果 */
-    const backendSearch = (querySearch, cb) => {
-      let results = []
-      if (backendSearch) {
-        const findout = totalData.value.filter((x) => nameFilter(x, backendSearch))
-        results = findout.map(x => ({ ...x, value: x.label }))
-      } else {
-        results = totalData.value.map(x => ({ ...x, value: x.label }))
-      }
-
-      console.log(results, '结果')
-      clearTimeout(timeOut)
-      timeOut = setTimeout(() => {
-        cb(results)
-      }, 1000);
-    }
-
-    /**选择的结果 */
-    const handleSelect = (item) => {
-      console.log(item, '选择结果')
-      searchName.value = "[label：" + item.label + "； name：" + item.name + "]"
-    }
-
-   /**模糊匹配方法 */
-    const nameFilter = (item, backendSearch) => {
-      return item.label.toLowerCase().match(backendSearch.toLowerCase()) ? true : false
-    }
-
-    /**首字母匹配法 */
-    const firstCharFilter = (item, backendSearch) =>
-      item.label.toLowerCase().indexOf(backendSearch.toLowerCase()) === 0
-
-
-    /**请求后端接口检索 */
-    const backendSearchAsync = (backendSearch, cb) => {
-      let results = []
-      if (backendSearch === '') {
-        cb(results)
-      } else {
-        try {
-          // 请求接口
-          const res = []
-          results = res
-          cb(results)
-        } catch (error) {
-          proxy.$message.error(error.message)
-        }
-      }
-    }
-
-    onMounted(() => {
-      getList()
-    })
-
-    const list = [
-      { id: 101, label: "angle", name: "角；角度" },
-      { id: 102, label: "ant", name: "蚂蚁" },
-      { id: 103, label: "apple", name: "苹果" },
-      { id: 104, label: "arch", name: "拱形；弧形" },
-      { id: 105, label: "arm", name: "臂" },
-      { id: 106, label: "army", name: "军队" },
-      { id: 107, label: "baby", name: "婴儿" },
-      { id: 108, label: "bag", name: "袋" },
-      { id: 109, label: "ball", name: "球" },
-      { id: 122, label: "bone", name: "骨" },
-      { id: 123, label: "book", name: "书" },
-      { id: 124, label: "boot", name: "靴" },
-      { id: 125, label: "bottle", name: "瓶子" },
-      { id: 126, label: "box", name: "箱；盒" },
-      { id: 127, label: "boy", name: "男孩" },
-      { id: 128, label: "brain", name: "脑" },
-      { id: 129, label: "brake", name: "煞车" },
-      { id: 130, label: "branch", name: "树枝" },
-      { id: 131, label: "brick", name: "砖" },
-      { id: 132, label: "bridge", name: "桥" },
-      { id: 133, label: "brush", name: "刷子" },
-      { id: 134, label: "bucket", name: "水桶" },
-      { id: 135, label: "bulb", name: "球茎；灯泡" },
-      { id: 136, label: "button", name: "纽扣" },
-      { id: 150, label: "clock", name: "时钟" },
-      { id: 151, label: "cloud", name: "云" },
-      { id: 152, label: "coat", name: "外套，大衣" },
-      { id: 153, label: "collar", name: "衣领" },
-      { id: 154, label: "comb", name: "梳子" },
-      { id: 155, label: "cord", name: "绳子" },
-      { id: 156, label: "cow", name: "母牛" },
-      { id: 157, label: "cup", name: "杯子" },
-      { id: 158, label: "curtain", name: "帘；幕" },
-      { id: 159, label: "cushion", name: "垫子" },
-      { id: 160, label: "dog", name: "狗" },
-      { id: 169, label: "eye", name: "眼睛" },
-    ]
-
-    return {
-      searchName,
-      matchName,
-      backendSear,
-      handleSelect,
-      querySearchAsync
-
-    }
-  }
-}
-
-</script>
               <div v-if="advanced === '2'">
                 
                 <el-form-item label="远程配置:">
@@ -723,7 +597,16 @@ export default {
           this.loading = false;
         });
     },
-    
+    backendSearch(queryString, cb) {
+      let backends = this.options.backendOptions;
+
+      let results = queryString
+        ? backends.filter(this.createFilter(queryString))
+        : backends;
+
+      // 调用 callback 返回建议列表的数据
+      cb(results);
+    },
     createFilter(queryString) {
       return candidate => {
         return (
