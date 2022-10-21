@@ -4,10 +4,10 @@
       <el-col>
         <el-card>
           <div slot="header">
-            Subscription Converter
-            <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject" />
-
-            <div style="display: inline-block; position:absolute; right: 20px">{{ backendVersion }}</div>
+            白嫖集装箱
+            <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject"/>
+           <div style="display: inline-block; position:absolute; right: 20px"><a href="https://t.me/bpjzx2">免费节点点我</a></div>
+            <div style="display: none; position:absolute; right: 20px">{{ backendVersion }}</div>
           </div>
           <el-container>
             <el-form :model="form" label-width="80px" label-position="left" style="width: 100%">
@@ -255,7 +255,9 @@ export default {
           ClashR: "clashr",
           Surge2: "surge&ver=2",
         },
-        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" }],
+        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" },
+                         { value: "https://sub.bpjzx2.workers.dev/sub?" }
+        ],
         remoteConfig: [
           {
             label: "universal",
